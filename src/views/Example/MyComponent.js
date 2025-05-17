@@ -11,6 +11,12 @@ class MyComponent extends React.Component {
     JSX => return 
     */
 
+    handleOnChangeName = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+    }
+
     render() {
 
         let name = 'Eric';
@@ -18,8 +24,11 @@ class MyComponent extends React.Component {
         return (
             <React.Fragment>
                 <div className="first">
+                    <input value={this.state.name} type="text"
+                        onChange={(event) => this.handleOnChangeName(event)}
+                    />
                     {console.log('My name is: ', this.state.name)}
-                    hello my component, My name is {this.state.name}
+                    My name is {this.state.name}
                 </div>
                 <div className="second">
                     My youtube channel : {this.state.channel}
