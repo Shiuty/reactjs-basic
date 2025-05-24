@@ -1,10 +1,16 @@
 import React from "react";
+import ChildComponent from "./ChildComponent";
 
 class MyComponent extends React.Component {
 
     state = {
         firstName: '',
-        lastName: ''
+        lastName: '',
+        arrJobs: [
+            { id: 'abcJob1', title: 'Developer', salary: '500 $' },
+            { id: 'abcJob2', title: 'Testers', salary: '400 $' },
+            { id: 'abcJob3', title: 'Project Managers', salary: '1000 $' },
+        ]
     }
 
     /*
@@ -28,7 +34,7 @@ class MyComponent extends React.Component {
     handleSubmit = (event) => {
         console.log("hit the button")
         event.preventDefault()
-        alert('Click me!!!')
+        console.log('>>> check data input: ', this.state)
     }
 
     render() {
@@ -57,6 +63,13 @@ class MyComponent extends React.Component {
                         value="Submit"
                         onClick={(event) => this.handleSubmit(event)}></input>
                 </form>
+
+                <ChildComponent
+                    name={this.state.firstName}
+                    age={'25'}
+                    address={'Hồ Chí Minh'}
+                    arrJob={this.state.arrJobs}
+                />
             </>
         )
     }
